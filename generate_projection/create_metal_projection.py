@@ -56,7 +56,6 @@ if __name__ == "__main__":
         Z_proj_rho["all"] = (rho * data["Z"]).sum(dim="z") / 0.02 / rho.sum(dim="z")
 
         dset = xr.Dataset()
-        for Z_proj in [Z_proj_EM, Z_proj_rho]:
-            dset["EM"] = xr.Dataset(Z_proj).to_array("phase")
-            dset["rho"] = xr.Dataset(Z_proj).to_array("phase")
-        dset.to_netcdf(fname)
+        dset["EM"] = xr.Dataset(Z_proj_EM).to_array("phase")
+        dset["rho"] = xr.Dataset(Z_proj_rho).to_array("phase")
+        dset.assign_coords(time=ds.domain["time"]).to_netcdf(fname)
