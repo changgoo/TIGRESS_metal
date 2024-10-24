@@ -1,9 +1,11 @@
 # Purpose
-
 Scripts in this folder is to read raw TIGRESS-NCR output to create phase-separated metallicity projection files.
 
+# Requirements
+`pyathena`, `xarray[io]`, `mpi4py` (to run in parallel)
+
 # Example
-Run on stellar for model in `/projects/EOSTRIKER`
+Run on stellar for model in `/projects/EOSTRIKER/TIGRESS-NCR/`
 
 ```sh
 salloc -N1 -n96 --kill-command=SIGTERM --time=0:30:00 ./run.sh R8_8pc_NCR.full.b10.v3.iCR4.Zg1.Zd1.xy2048.eps0.0
